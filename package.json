@@ -28,6 +28,7 @@
     "readme"
   ],
   "dependencies": {
+    "default-pager": "^1.0.2",
     "got": "^3.2.0",
     "registry-url": "^3.0.3"
   },
