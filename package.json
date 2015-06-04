@@ -9,7 +9,8 @@
     "npm-man": "cli.js"
   },
   "files": [
-    "cli.js"
+    "cli.js",
+    "index.js"
   ],
   "homepage": "https://github.com/eush77/npm-man",
   "repository": {
