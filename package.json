@@ -1,0 +1,35 @@
+{
+  "name": "npm-man",
+  "version": "0.0.0",
+  "description": "Open any package readme in a pager, think dominictarr/readme for not installed",
+  "author": "Eugene Sharygin <eush77@gmail.com>",
+  "license": "MIT",
+  "preferGlobal": true,
+  "bin": {
+    "npm-man": "cli.js"
+  },
+  "files": [
+    "cli.js"
+  ],
+  "homepage": "https://github.com/eush77/npm-man",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eush77/npm-man"
+  },
+  "bugs": {
+    "url": "https://github.com/eush77/npm-man/issues"
+  },
+  "keywords": [
+    "npm",
+    "man",
+    "pager",
+    "less",
+    "more",
+    "readme"
+  ],
+  "dependencies": {
+    "got": "^3.2.0",
+    "registry-url": "^3.0.3"
+  },
+  "devDependencies": {}
+}
