@@ -25,7 +25,7 @@ module.exports = function (name, opts, cb) {
     if (opts.man) {
       mdast = mdast.use(mdastStripBadges)
         .use(mdastMan, {
-          section: 1,
+          section: 'npm',
           name: pkg.name,
           version: pkg.version,
           description: pkg.description
