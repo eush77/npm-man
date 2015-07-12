@@ -1,9 +1,10 @@
 'use strict';
 
-var makeMan = require('./lib/make-man');
-
 var registryUrl = require('registry-url')(),
-    got = require('got');
+    got = require('got'),
+    Mdast = require('mdast'),
+    mdastMan = require('mdast-man'),
+    mdastStripBadges = require('mdast-strip-badges');
 
 
 module.exports = function (name, opts, cb) {
@@ -16,9 +17,20 @@ module.exports = function (name, opts, cb) {
     opts.man = true;
   }
 
-  got(registryUrl + name, { json: true }, function (err, info) {
+  var mdast = Mdast.use(mdastStripBadges);
+
+  got(registryUrl + name, { json: true }, function (err, pkg) {
     if (err) return cb(err);
-    var man = opts.man ? makeMan(info) : info.readme;
-    cb(err, man);
+
+    if (opts.man) {
+      mdast = mdast.use(mdastMan, {
+        section: 1,
+        name: pkg.name,
+        version: pkg.version,
+        description: pkg.description
+      });
+    }
+
+    cb(err, mdast.process(pkg.readme));
   });
 };
