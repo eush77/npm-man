@@ -28,7 +28,8 @@ module.exports = function (name, opts, cb) {
           section: 'npm',
           name: pkg.name,
           version: pkg.version,
-          description: pkg.description
+          description: pkg.description,
+          date: pkg.time.modified
         });
     }
 
