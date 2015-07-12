@@ -10,14 +10,24 @@ var help = require('help-version')(usage()).help,
 
 
 function usage() {
-  return 'Usage:  npm-man [--no-man] <package>';
+  return [
+    'Usage:  npm-man [--markdown | -m] <package>',
+    '',
+    'Fetch from npm and open package readme as a man page.',
+    '',
+    'Options:',
+    '  --markdown, -m  Open readme in Markdown instead.'
+  ].join('\n');
 }
 
 
 var opts = minimist(process.argv.slice(2), {
-  boolean: 'man',
+  boolean: 'markdown',
+  alias: {
+    markdown: 'm',
+  },
   default: {
-    man: true
+    markdown: false
   },
   unknown: function (arg) {
     if (arg[0] == '-') {
@@ -32,9 +42,9 @@ var opts = minimist(process.argv.slice(2), {
     return help(argv.length);
   }
 
-  var pager = opts.man ? manPager : defaultPager;
+  var pager = opts.markdown ? defaultPager : manPager;
 
-  npmMan(argv[0], opts, function (err, man) {
+  npmMan(argv[0], { man: !opts.markdown }, function (err, man) {
     if (err) return console.error(err);
     pager().end(man);
   });

@@ -11,9 +11,9 @@ Fetches package's readme from the npm registry and renders it as a man page.
 
 ## CLI
 
-### `npm-man [--no-man] <package>`
+### `npm-man [--markdown | -m] <package>`
 
-Opens readme for `<package>` as a man page or in the `$PAGER` (with `--no-man`).
+Opens readme for `<package>` as a man page or in the `$PAGER` (with `--markdown`).
 
 ## API
 
