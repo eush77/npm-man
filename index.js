@@ -4,7 +4,8 @@ var registryUrl = require('registry-url')(),
     got = require('got'),
     MdAst = require('mdast'),
     mdastMan = require('mdast-man'),
-    mdastStripBadges = require('mdast-strip-badges');
+    mdastStripBadges = require('mdast-strip-badges'),
+    npmExpansion = require('npm-expansion');
 
 
 module.exports = function (name, opts, cb) {
@@ -26,6 +27,7 @@ module.exports = function (name, opts, cb) {
       mdast = mdast.use(mdastStripBadges)
         .use(mdastMan, {
           section: 'npm',
+          manual: npmExpansion(),
           name: pkg.name,
           version: pkg.version,
           description: pkg.description,
