@@ -10,7 +10,8 @@
   },
   "files": [
     "cli.js",
-    "index.js"
+    "index.js",
+    "lib/"
   ],
   "homepage": "https://github.com/eush77/npm-man",
   "repository": {
@@ -32,6 +33,9 @@
     "default-pager": "^1.0.2",
     "got": "^3.2.0",
     "help-version": "^0.2.0",
+    "man-pager": "^1.0.0",
+    "mdast": "^0.26.2",
+    "mdast-man": "^0.3.0",
     "registry-url": "^3.0.3"
   },
   "devDependencies": {}

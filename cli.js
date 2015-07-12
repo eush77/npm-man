@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 'use strict';
 
-var npmMan = require('./'),
-    pager = require('default-pager'),
-    help = require('help-version')(usage()).help;
+var npmMan = require('./');
+
+var help = require('help-version')(usage()).help,
+    manPager = require('man-pager'),
+    defaultPager = require('default-pager');
 
 
 function usage() {
@@ -13,12 +15,11 @@ function usage() {
 
 (function (argv) {
   if (argv.length != 1) {
-    help(argv.length);
+    return help(argv.length);
   }
+
+  npmMan(process.argv[2], function (err, man) {
+    if (err) return console.error(err);
+    manPager().end(man);
+  });
 }(process.argv.slice(2)));
-
-
-npmMan(process.argv[2], function (err, man) {
-  if (err) return console.error(err);
-  pager().end(man);
-});
