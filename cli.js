@@ -32,8 +32,10 @@ var opts = minimist(process.argv.slice(2), {
     return help(argv.length);
   }
 
+  var pager = opts.man ? manPager : defaultPager;
+
   npmMan(argv[0], opts, function (err, man) {
     if (err) return console.error(err);
-    manPager().end(man);
+    pager().end(man);
   });
 }(opts, opts._));
