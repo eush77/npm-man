@@ -36,6 +36,7 @@
     "man-pager": "^1.0.0",
     "mdast": "^0.26.2",
     "mdast-man": "^0.3.0",
+    "minimist": "^1.1.1",
     "registry-url": "^3.0.3"
   },
   "devDependencies": {}

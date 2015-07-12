@@ -4,22 +4,36 @@
 var npmMan = require('./');
 
 var help = require('help-version')(usage()).help,
+    minimist = require('minimist'),
     manPager = require('man-pager'),
     defaultPager = require('default-pager');
 
 
 function usage() {
-  return 'Usage:  npm-man <package>';
+  return 'Usage:  npm-man [--no-man] <package>';
 }
 
 
-(function (argv) {
+var opts = minimist(process.argv.slice(2), {
+  boolean: 'man',
+  default: {
+    man: true
+  },
+  unknown: function (arg) {
+    if (arg[0] == '-') {
+      return help(1);
+    }
+  }
+});
+
+
+(function (opts, argv) {
   if (argv.length != 1) {
     return help(argv.length);
   }
 
-  npmMan(process.argv[2], function (err, man) {
+  npmMan(argv[0], opts, function (err, man) {
     if (err) return console.error(err);
     manPager().end(man);
   });
-}(process.argv.slice(2)));
+}(opts, opts._));

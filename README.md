@@ -4,22 +4,29 @@
 
 [![Dependency Status][david-badge]][david]
 
-Fetches packages readme from npm registry. Opens readme in a pager.
+Fetches package's readme from the npm registry and renders it as a man page.
 
 [david]: https://david-dm.org/eush77/npm-man
 [david-badge]: https://david-dm.org/eush77/npm-man.png
 
 ## CLI
 
-### `npm-man <package>`
+### `npm-man [--no-man] <package>`
 
-Opens readme for `<package>` in your $PAGER.
+Opens readme for `<package>` as a man page or in the `$PAGER` (with `--no-man`).
 
 ## API
 
-### `npmMan(packageName, cb(err, man))`
+#### `npmMan(packageName, [opts], cb(err, man))`
 
-Fetches readme for `packageName` from npm registry.
+Fetches readme for `packageName` from the npm registry and returns it as a man page.
+
+##### `opts.man`
+
+Type: `Boolean`<br>
+Default: `true`<br>
+
+Emit readme in Troff format, not in plain Markdown.
 
 ## Install
 
