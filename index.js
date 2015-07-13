@@ -2,7 +2,7 @@
 
 var registryUrl = require('registry-url')(),
     got = require('got'),
-    MdAst = require('mdast'),
+    mdast = require('mdast'),
     mdastMan = require('mdast-man'),
     mdastStripBadges = require('mdast-strip-badges'),
     npmExpansion = require('npm-expansion');
@@ -18,13 +18,13 @@ module.exports = function (name, opts, cb) {
     opts.man = true;
   }
 
-  var mdast = MdAst;
-
   got(registryUrl + name, { json: true }, function (err, pkg) {
     if (err) return cb(err);
 
+    var md = mdast();
+
     if (opts.man) {
-      mdast = mdast.use(mdastStripBadges)
+      md = md.use(mdastStripBadges)
         .use(mdastMan, {
           section: 'npm',
           manual: npmExpansion(),
@@ -35,6 +35,6 @@ module.exports = function (name, opts, cb) {
         });
     }
 
-    cb(err, mdast.process(pkg.readme));
+    cb(err, md.process(pkg.readme));
   });
 };
