@@ -33,14 +33,8 @@
     "got": "^3.2.0",
     "help-version": "^1.0.0",
     "man-pager": "^1.0.0",
-    "mdast": "^0.26.2",
-    "mdast-man": "^0.4.0",
-    "mdast-squeeze-paragraphs": "^1.0.0",
-    "mdast-strip-badges": "^0.1.0",
-    "mdast-util-to-string": "^0.1.0",
-    "mdast-util-visit": "^0.1.1",
     "minimist": "^1.1.1",
-    "npm-expansion": "^1.0.0",
+    "readme-to-man-page": "^0.1.0",
     "registry-url": "^3.0.3"
   },
   "devDependencies": {}
