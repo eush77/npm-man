@@ -34,7 +34,7 @@
     "help-version": "^1.0.0",
     "man-pager": "^1.0.0",
     "minimist": "^1.1.1",
-    "readme-to-man-page": "^0.1.0",
+    "readme-to-man-page": "^0.2.1",
     "registry-url": "^3.0.3"
   },
   "devDependencies": {}
