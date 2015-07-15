@@ -9,6 +9,8 @@ Fetches package's readme from the npm registry and renders it as a man page.
 [david]: https://david-dm.org/eush77/npm-man
 [david-badge]: https://david-dm.org/eush77/npm-man.png
 
+![screenshot](screenshot.png)
+
 ## CLI
 
 ### `npm-man [--markdown | -m] <package>`
