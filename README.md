@@ -30,6 +30,12 @@ Default: `true`<br>
 
 Emit readme in Troff format, not in plain Markdown.
 
+## Related
+
+- [github-man] — open README from GitHub repository as a man page.
+
+[github-man]: https://github.com/eush77/github-man
+
 ## Install
 
 ```
