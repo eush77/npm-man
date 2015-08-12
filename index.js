@@ -2,7 +2,8 @@
 
 var registryUrl = require('registry-url')(),
     got = require('got'),
-    readmeToManPage = require('readme-to-man-page');
+    readmeToManPage = require('readme-to-man-page'),
+    npmExpansion = require('npm-expansion');
 
 
 module.exports = function (name, opts, cb) {
@@ -17,6 +18,18 @@ module.exports = function (name, opts, cb) {
 
   got(registryUrl + name, { json: true }, function (err, pkg) {
     if (err) return cb(err);
-    cb(err, opts.man ? readmeToManPage(pkg) : pkg.readme);
+    cb(err, opts.man ? manPage(pkg) : pkg.readme);
   });
 };
+
+
+function manPage (pkg) {
+  return readmeToManPage(pkg.readme, {
+    name: pkg.name,
+    version: pkg['dist-tags'].latest,
+    description: pkg.description,
+    date: pkg.time.modified,
+    section: 'npm',
+    manual: npmExpansion()
+  });
+}
