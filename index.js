@@ -6,19 +6,10 @@ var registryUrl = require('registry-url')(),
     npmExpansion = require('npm-expansion');
 
 
-module.exports = function (name, opts, cb) {
-  if (typeof opts == 'function') {
-    cb = opts;
-    opts = {};
-  }
-
-  if (opts.man == null) {
-    opts.man = true;
-  }
-
+module.exports = function (name, cb) {
   got(registryUrl + name, { json: true }, function (err, pkg) {
     if (err) return cb(err);
-    cb(err, opts.man ? manPage(pkg) : pkg.readme);
+    cb(null, manPage(pkg));
   });
 };
 

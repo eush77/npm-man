@@ -35,11 +35,9 @@
     "viewer"
   ],
   "dependencies": {
-    "default-pager": "^1.0.2",
     "got": "^3.2.0",
     "help-version": "^1.0.0",
     "man-pager": "^1.0.0",
-    "minimist": "^1.1.1",
     "npm-expansion": "^1.0.0",
     "readme-to-man-page": "^0.5.0",
     "registry-url": "^3.0.3"

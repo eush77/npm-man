@@ -13,22 +13,15 @@ Fetches package's readme from the npm registry and renders it as a man page.
 
 ## CLI
 
-### `npm-man [--markdown | -m] <package>`
+### `npm-man <package>`
 
-Opens readme for `<package>` as a man page or in the `$PAGER` (with `--markdown`).
+Opens readme for `<package>` as a man page.
 
 ## API
 
-#### `npmMan(packageName, [opts], cb(err, man))`
+#### `npmMan(packageName, cb(err, man))`
 
 Fetches readme for `packageName` from the npm registry and returns it as a man page.
-
-##### `opts.man`
-
-Type: `Boolean`<br>
-Default: `true`<br>
-
-Emit readme in Troff format, not in plain Markdown.
 
 ## Related
 

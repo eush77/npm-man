@@ -4,48 +4,25 @@
 var npmMan = require('./');
 
 var help = require('help-version')(usage()).help,
-    minimist = require('minimist'),
-    manPager = require('man-pager'),
-    defaultPager = require('default-pager');
+    manPager = require('man-pager');
 
 
 function usage() {
   return [
-    'Usage:  npm-man [--markdown | -m] <package>',
+    'Usage:  npm-man <package>',
     '',
-    'Fetch from npm and open package readme as a man page.',
-    '',
-    'Options:',
-    '  --markdown, -m  Open readme in Markdown instead.'
+    'Fetch from npm and open package readme as a man page.'
   ].join('\n');
 }
 
 
-var opts = minimist(process.argv.slice(2), {
-  boolean: 'markdown',
-  alias: {
-    markdown: 'm',
-  },
-  default: {
-    markdown: false
-  },
-  unknown: function (arg) {
-    if (arg[0] == '-') {
-      return help(1);
-    }
-  }
-});
-
-
-(function (opts, argv) {
+(function (argv) {
   if (argv.length != 1) {
     return help(argv.length);
   }
 
-  var pager = opts.markdown ? defaultPager : manPager;
-
-  npmMan(argv[0], { man: !opts.markdown }, function (err, man) {
+  npmMan(argv[0], function (err, man) {
     if (err) return console.error(err);
-    pager().end(man);
+    manPager().end(man);
   });
-}(opts, opts._));
+}(process.argv.slice(2)));
