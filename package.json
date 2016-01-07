@@ -35,11 +35,11 @@
     "viewer"
   ],
   "dependencies": {
-    "got": "^4.1.1",
+    "got": "^5.3.0",
     "help-version": "^1.0.0",
     "man-pager": "^1.0.0",
     "npm-expansion": "^1.0.0",
-    "readme-to-man-page": "^0.5.0",
+    "readme-to-man-page": "^0.6.0",
     "registry-url": "^3.0.3"
   },
   "devDependencies": {}
