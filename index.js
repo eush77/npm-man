@@ -19,7 +19,7 @@ function manPage (pkg) {
     name: pkg.name,
     version: pkg['dist-tags'].latest,
     description: pkg.description,
-    date: pkg.time.modified,
+    date: pkg.time && pkg.time.modified,
     section: 'npm',
     manual: npmExpansion()
   });
